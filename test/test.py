@@ -17,18 +17,26 @@ async def test_priority_encoder(dut):
     dut.ui_in.value = 0b00101010   
     dut.uio_in.value = 0b11110001  
     await Timer(1, units="ns")
-    assert dut.uo_out.value == 13, f"Test 1 failed: Expected 13, got {dut.uo_out.value}"
+    assert dut.uo_out.value == 13, f"wrong answer: {dut.uo_out.value}, true answer is 13"
  
-    dut.ui_in.value = 0b00000000
-    dut.uio_in.value = 0b00000001
-    await Timer(10, units="ns")
-    assert dut.uo_out.value == 0, f"Test 2 failed: Expected 0, got {dut.uo_out.value}"
+    dut.ui_in.value = 0b10101010   
+    dut.uio_in.value = 0b11110001  
+    await Timer(1, units="ns")
+    assert dut.uo_out.value == 13, f"wrong answer: {dut.uo_out.value}, true answer is 15"
  
     dut.ui_in.value = 0b00000000
     dut.uio_in.value = 0b00000000
-    await Timer(10, units="ns")
-    assert dut.uo_out.value == 240, f"Test 3 failed: Expected 240, got {dut.uo_out.value}"
+    await Timer(1, units="ns")
+    assert dut.uo_out.value == 240, f"wrong answer: {dut.uo_out.value},  true nswer is 240"
  
-    
+    dut.ui_in.value = 0b00000000
+    dut.uio_in.value = 0b00000001
+    await Timer(1, units="ns")
+    assert dut.uo_out.value == 0, f"wrong answer: {dut.uo_out.value}, true answer is 0"
+
+     dut.ui_in.value = 0b00000001
+    dut.uio_in.value = 0b00000001
+    await Timer(1, units="ns")
+    assert dut.uo_out.value == 8, f"wrong answer: {dut.uo_out.value}, true answer is 8"
 
     print("All tests passed")
