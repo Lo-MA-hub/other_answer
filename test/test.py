@@ -22,7 +22,7 @@ async def test_priority_encoder(dut):
     dut.ui_in.value = 0b10101010   
     dut.uio_in.value = 0b11110001  
     await Timer(1, units="ns")
-    assert dut.uo_out.value == 13, f"wrong answer: {dut.uo_out.value}, true answer is 15"
+    assert dut.uo_out.value == 15, f"wrong answer: {dut.uo_out.value}, true answer is 15"
  
     dut.ui_in.value = 0b00000000
     dut.uio_in.value = 0b00000000
