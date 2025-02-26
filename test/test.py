@@ -44,3 +44,4 @@ async def test_priority_encoder(dut):
     dut.uio_in.value = 0b00000011   
     await Timer(10, units="ns")
     assert dut.uo_out.value == 1, f"Test 5 failed: Expected 1, got {dut.uo_out.value}"
+    dut._log.info("All tests passed!")
