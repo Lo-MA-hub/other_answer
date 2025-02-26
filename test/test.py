@@ -18,7 +18,7 @@ async def test_priority_encoder(dut):
     dut.ui_in.value = 0
     dut.uio_in.value = 0
     dut.rst_n.value = 0
-    await ClockCycles(dut.clk, 10)
+    await ClockCycles(dut.clk, 1)
     dut.rst_n.value = 1
 
     dut._log.info("Test priority encoder behavior")
